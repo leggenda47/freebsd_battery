@@ -5,7 +5,7 @@ from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.core import HomeAssistant
 from homeassistant.components.sensor import SensorEntity
-import os
+import subprocess
 
 from homeassistant.const import DEVICE_CLASS_BATTERY, PERCENTAGE
 import homeassistant.helpers.config_validation as cv
@@ -69,7 +69,9 @@ class FreeBSDBattery(SensorEntity):
 
     def update(self):
         """Get the latest data and updates the states."""
-        self._battery_life = int(os.system(BATTERY_LIFE_COMMAND))
-        self._battery_status = int(os.system(BATTERY_STATUS_COMMAND))
-        _LOGGER.info(os.system(BATTERY_LIFE_COMMAND))
-        _LOGGER.info(os.system(BATTERY_STATUS_COMMAND))
+        self._battery_life = int(subprocess.check_output(
+            BATTERY_LIFE_COMMAND, shell=True))
+        self._battery_status = int(subprocess.check_output(
+            BATTERY_STATUS_COMMAND, shell=True))
+        _LOGGER.info(self._battery_life)
+        _LOGGER.info(self._battery_status)
