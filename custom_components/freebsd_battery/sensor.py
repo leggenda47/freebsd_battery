@@ -61,6 +61,7 @@ class FreeBSDBattery(SensorEntity):
     @property
     def extra_state_attributes(self):
         return {
+            "life": self._battery_life,
             "status": self._battery_status
         }
 
