@@ -1,0 +1,10 @@
+{
+	"name": "FreeBSD Battery",
+	"hacs": "1.6.0",
+	"domains": [
+		"battery"
+	],
+	"iot_class": "Local Polling",
+	"render_readme": true,
+	"homeassistant": "0.118.0"
+}
