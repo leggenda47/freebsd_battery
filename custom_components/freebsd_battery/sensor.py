@@ -69,5 +69,5 @@ class FreeBSDBattery(SensorEntity):
         """Get the latest data and updates the states."""
         self._battery_life = int(os.system(BATTERY_LIFE_COMMAND))
         self._battery_status = int(os.system(BATTERY_STATUS_COMMAND))
-        _LOGGER.log(1, self._battery_life)
-        _LOGGER.log(1, self._battery_status)
+        _LOGGER.log(10, os.system(BATTERY_LIFE_COMMAND))
+        _LOGGER.log(10, os.system(BATTERY_STATUS_COMMAND))
